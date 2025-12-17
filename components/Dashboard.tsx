@@ -65,9 +65,15 @@ export const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
     else {
       // Default classes seed if empty
       const defaultClasses = [
-        { name: 'DNV', id: '1' }, { name: 'ABS', id: '2' }, { name: 'Lloyds Register', id: '3' },
-        { name: 'Bureau Veritas', id: '4' }, { name: 'ClassNK', id: '5' }, { name: 'IBS', id: '6' }
-      ];
+      const defaultClasses = [
+  { name: 'DNV', id: '1' },
+  { name: 'ABS', id: '2' },
+  { name: 'Lloyds Register', id: '3' },
+  { name: 'Bureau Veritas', id: '4' },
+  { name: 'ClassNK', id: '5' },
+  { name: 'IBS', id: '6' }
+];
+
       // Note: These need to be analyzed to populate full data, but we start with names
       // We won't auto-analyze on load to save API calls, user must click 'refresh'.
       const seeded: ClassSocietyData[] = defaultClasses.map(c => ({
