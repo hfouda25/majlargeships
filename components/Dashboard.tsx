@@ -1373,4 +1373,4 @@ export const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
       </main>
     </div>
   );
-};
+}
