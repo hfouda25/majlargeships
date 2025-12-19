@@ -309,7 +309,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
        if (s) subject += ` - MV ${s.name} (IMO: ${s.imo})`;
     }
     return prefix + subject;
-  };
+ return (
 
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto flex flex-col relative print:overflow-visible print:h-auto">
