@@ -64,31 +64,28 @@ export const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
     const savedSurveyors = localStorage.getItem('maj_surveyors_db');
     if (savedSurveyors) setSurveyors(JSON.parse(savedSurveyors));
 
+   useEffect(() => {
+    // Try to load saved classes from localStorage
     const savedClasses = localStorage.getItem('maj_classes_db');
-    if (savedClasses) setClassSocieties(JSON.parse(savedClasses));
-    else {
-      // Default classes seed if empty
-      const defaultClasses = [
-      const defaultClasses = [
-  { name: 'DNV', id: '1' },
-  { name: 'ABS', id: '2' },
-  { name: 'Lloyds Register', id: '3' },
-  { name: 'Bureau Veritas', id: '4' },
-  { name: 'ClassNK', id: '5' },
-  { name: 'IBS', id: '6' }
-];
 
-      // Note: These need to be analyzed to populate full data, but we start with names
-      // We won't auto-analyze on load to save API calls, user must click 'refresh'.
-      const seeded: ClassSocietyData[] = defaultClasses.map(c => ({
-         id: c.id, 
-         name: c.name, 
-         pscData: [], 
-         trend: 'Steady', 
-         trendReason: 'Pending Analysis', 
-         lastUpdated: new Date().toISOString() 
-      }));
-      setClassSocieties(seeded);
+    if (savedClasses) {
+      // Use previously saved data
+      setClassSocieties(JSON.parse(savedClasses));
+    } else {
+      // Default classes seed if empty
+      const defaultClasses: ClassSocietyData[] = [
+        { id: '1', name: 'DNV' },
+        { id: '2', name: 'ABS' },
+        { id: '3', name: "Lloyd's Register" },
+        { id: '4', name: 'Bureau Veritas' },
+        { id: '5', name: 'ClassNK' },
+        { id: '6', name: 'IBS' },
+      ];
+
+      setClassSocieties(defaultClasses);
+    }
+  }, []);
+
     }
   }, []);
 
