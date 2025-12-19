@@ -66,6 +66,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
 
    useEffect(() => {
     // Try to load saved classes from localStorage
+      // Class societies initial load
+  useEffect(() => {
     const savedClasses = localStorage.getItem('maj_classes_db');
 
     if (savedClasses) {
@@ -86,13 +88,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
     }
   }, []);
 
-    }
-  }, []);
-
   // Save data to localStorage whenever data changes
   useEffect(() => {
     localStorage.setItem('maj_ships_db', JSON.stringify(ships));
   }, [ships]);
+
 
   useEffect(() => {
     localStorage.setItem('maj_surveyors_db', JSON.stringify(surveyors));
