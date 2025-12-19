@@ -311,6 +311,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
     return prefix + subject;
  return (
 
+return (
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto flex flex-col relative print:overflow-visible print:h-auto">
         {/* Header */}
