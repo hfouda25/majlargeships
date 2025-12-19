@@ -8,6 +8,8 @@ import {
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { ShipData, SearchResult, InspectionData, Surveyor, ClassSocietyData } from '../types';
 import { searchShipData, analyzeClassPerformance } from '../services/geminiService';
+import ShipExemptions from "./ShipExemptions";
+
 
 interface DashboardProps {
   onLogout: () => void;
@@ -18,7 +20,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
   const [surveyors, setSurveyors] = useState<Surveyor[]>([]);
   const [classSocieties, setClassSocieties] = useState<ClassSocietyData[]>([]);
   
-  const [activeTab, setActiveTab] = useState<'overview' | 'lookup' | 'list' | 'surveyors' | 'class_perf' | 'settings'>('overview');
+ const [activeTab, setActiveTab] = useState<
+  'overview' | 'lookup' | 'list' | 'surveyors' | 'class_perf' | 'settings' | 'exemptions'>('overview');
+
   const [selectedShip, setSelectedShip] = useState<ShipData | null>(null);
   
   // Lookup State
@@ -374,6 +378,19 @@ export const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
               <span>Settings</span>
             </button>
           </div>
+          <div className="pt-4 border-t border-navy-700">
+  <button
+    onClick={() => { setActiveTab('exemptions'); setSelectedShip(null); }}
+    className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition ${
+      activeTab === 'exemptions'
+        ? 'bg-navy-800 text-gold-500 border border-gold-500 shadow-lg'
+        : 'text-gray-300 hover:bg-navy-800 hover:text-white'
+    }`}
+  >
+      <span>Exemptions & Extensions</span>
+  </button>
+</div>
+
         </nav>
 
         <div className="p-4 border-t border-navy-700">
