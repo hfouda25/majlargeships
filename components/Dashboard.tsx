@@ -325,71 +325,95 @@ export const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
           </div>
         </div>
         
-        <nav className="flex-1 p-4 space-y-2">
-          <button 
-            onClick={() => { setActiveTab('overview'); setSelectedShip(null); }}
-            className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition ${activeTab === 'overview' ? 'bg-navy-800 text-gold-500 border-l-4 border-gold-500' : 'text-gray-300 hover:bg-navy-800'}`}
-          >
-            <LayoutDashboard size={20} />
-            <span>Dashboard</span>
-          </button>
-          
-          <button 
-            onClick={() => { setActiveTab('lookup'); setSelectedShip(null); }}
-            className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition ${activeTab === 'lookup' ? 'bg-navy-800 text-gold-500 border-l-4 border-gold-500' : 'text-gray-300 hover:bg-navy-800'}`}
-          >
-            <PlusCircle size={20} />
-            <span>Register Vessel</span>
-          </button>
-          
-          <button 
-            onClick={() => { setActiveTab('list'); setSelectedShip(null); }}
-            className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition ${activeTab === 'list' ? 'bg-navy-800 text-gold-500 border-l-4 border-gold-500' : 'text-gray-300 hover:bg-navy-800'}`}
-          >
-            <Ship size={20} />
-            <span>Vessel Fleet</span>
-          </button>
+       <nav className="flex-1 p-4 space-y-2">
 
-          <button 
-            onClick={() => { setActiveTab('surveyors'); setSelectedShip(null); }}
-            className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition ${activeTab === 'surveyors' ? 'bg-navy-800 text-gold-500 border-l-4 border-gold-500' : 'text-gray-300 hover:bg-navy-800'}`}
-          >
-            <Users size={20} />
-            <span>Surveyors (NES)</span>
-          </button>
-
-          <button 
-            onClick={() => { setActiveTab('class_perf'); setSelectedShip(null); }}
-            className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition ${activeTab === 'class_perf' ? 'bg-navy-800 text-gold-500 border-l-4 border-gold-500' : 'text-gray-300 hover:bg-navy-800'}`}
-          >
-            <Activity size={20} />
-            <span>Class Performance</span>
-          </button>
-
-          <div className="pt-4 mt-4 border-t border-navy-700">
-            <button 
-              onClick={() => { setActiveTab('settings'); setSelectedShip(null); }}
-              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition ${activeTab === 'settings' ? 'bg-navy-800 text-gold-500 border-l-4 border-gold-500' : 'text-gray-300 hover:bg-navy-800'}`}
-            >
-              <Settings size={20} />
-              <span>Settings</span>
-            </button>
-          </div>
-          <div className="pt-4 border-t border-navy-700">
   <button
-   {/* Exemptions & Extensions – Opens External System */}
-<div className="pt-4 mt-4 border-t border-navy-700">
-  <button
-    onClick={() => window.open('https://majexemption.netlify.app', '_blank')}
-    className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition text-gray-300 hover:bg-navy-800 hover:text-white"
-    type="button"
+    onClick={() => { setActiveTab('overview'); setSelectedShip(null); }}
+    className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition ${
+      activeTab === 'overview'
+        ? 'bg-navy-800 text-gold-500 border border-gold-500 shadow-lg'
+        : 'text-gray-300 hover:bg-navy-800 hover:text-white'
+    }`}
   >
+    <LayoutDashboard size={20} />
+    <span>Dashboard</span>
+  </button>
+
+  <button
+    onClick={() => { setActiveTab('lookup'); setSelectedShip(null); }}
+    className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition ${
+      activeTab === 'lookup'
+        ? 'bg-navy-800 text-gold-500 border border-gold-500 shadow-lg'
+        : 'text-gray-300 hover:bg-navy-800 hover:text-white'
+    }`}
+  >
+    <PlusCircle size={20} />
+    <span>Register Vessel</span>
+  </button>
+
+  <button
+    onClick={() => { setActiveTab('list'); setSelectedShip(null); }}
+    className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition ${
+      activeTab === 'list'
+        ? 'bg-navy-800 text-gold-500 border border-gold-500 shadow-lg'
+        : 'text-gray-300 hover:bg-navy-800 hover:text-white'
+    }`}
+  >
+    <Ship size={20} />
+    <span>Vessel Fleet</span>
+  </button>
+
+  <button
+    onClick={() => { setActiveTab('surveyors'); setSelectedShip(null); }}
+    className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition ${
+      activeTab === 'surveyors'
+        ? 'bg-navy-800 text-gold-500 border border-gold-500 shadow-lg'
+        : 'text-gray-300 hover:bg-navy-800 hover:text-white'
+    }`}
+  >
+    <Users size={20} />
+    <span>Surveyors (NES)</span>
+  </button>
+
+  <button
+    onClick={() => { setActiveTab('class_perf'); setSelectedShip(null); }}
+    className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition ${
+      activeTab === 'class_perf'
+        ? 'bg-navy-800 text-gold-500 border border-gold-500 shadow-lg'
+        : 'text-gray-300 hover:bg-navy-800 hover:text-white'
+    }`}
+  >
+    <TrendingUp size={20} />
+    <span>Class Performance</span>
+  </button>
+
+  {/* ⭐ NEW — EXEMPTIONS TAB */}
+  <button
+    onClick={() => { setActiveTab('exemptions'); setSelectedShip(null); }}
+    className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition ${
+      activeTab === 'exemptions'
+        ? 'bg-navy-800 text-gold-500 border border-gold-500 shadow-lg'
+        : 'text-gray-300 hover:bg-navy-800 hover:text-white'
+    }`}
+  >
+    <ShieldCheck size={20} />
     <span>Exemptions & Extensions</span>
   </button>
-</div>
 
+  <button
+    onClick={() => { setActiveTab('settings'); setSelectedShip(null); }}
+    className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition ${
+      activeTab === 'settings'
+        ? 'bg-navy-800 text-gold-500 border border-gold-500 shadow-lg'
+        : 'text-gray-300 hover:bg-navy-800 hover:text-white'
+    }`}
+  >
+    <Settings size={20} />
+    <span>Settings</span>
   </button>
-</div>
+
+</nav>
+
 
         </nav>
 
