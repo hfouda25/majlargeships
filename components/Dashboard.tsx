@@ -377,14 +377,17 @@ export const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
           </div>
           <div className="pt-4 border-t border-navy-700">
   <button
-    onClick={() => { setActiveTab('exemptions'); setSelectedShip(null); }}
-    className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition ${
-      activeTab === 'exemptions'
-        ? 'bg-navy-800 text-gold-500 border border-gold-500 shadow-lg'
-        : 'text-gray-300 hover:bg-navy-800 hover:text-white'
-    }`}
+   {/* Exemptions & Extensions – Opens External System */}
+<div className="pt-4 mt-4 border-t border-navy-700">
+  <button
+    onClick={() => window.open('https://majexemption.netlify.app', '_blank')}
+    className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition text-gray-300 hover:bg-navy-800 hover:text-white"
+    type="button"
   >
-      <span>Exemptions & Extensions</span>
+    <span>Exemptions & Extensions</span>
+  </button>
+</div>
+
   </button>
 </div>
 
